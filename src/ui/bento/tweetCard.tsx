@@ -113,7 +113,7 @@ export default function TweetCard() {
                 </div>
                 <div className='flex justify-between items-center'>
                   <div className="mt-1 text-white text-[12px] w-[93%]">
-                    So, <span className="text-blue-400">@TrueG78</span>. Your daily task apparently
+                    So, <a href="https://x.com/TrueG78" target="_blank" rel="noopener noreferrer"><span className="text-blue-400 cursor-pointer">@TrueG78</span></a>. Your daily task apparently
                     went on vacation today. Without you. Hope it had fun. Meanwhile, it&apos;s still
                     waiting to be checked off whenever you decide to rejoin reality.
                   </div>
