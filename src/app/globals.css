@@ -14,7 +14,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
@@ -24,3 +24,93 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.animated-text {
+  animation: moveAroundBox 3s linear infinite;
+}
+
+@keyframes moveAroundBox {
+  0% {
+    transform: translate(0, 0); /* Start at top-left */
+  }
+  25% {
+    transform: translate(100%, 0); /* Move to top-right */
+  }
+  50% {
+    transform: translate(100%, 100%); /* Move to bottom-right */
+  }
+  75% {
+    transform: translate(0, 100%); /* Move to bottom-left */
+  }
+  100% {
+    transform: translate(0, 0); /* Return to top-left */
+  }
+}
+
+@keyframes textFlow {
+  0% { offset-distance: 0%; }
+  100% { offset-distance: 100%; }
+}
+.animated-text {
+  animation: textFlow 30s linear infinite;
+}
+
+@keyframes goUp {
+  from {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+  }
+  to {
+      transform: translate3d(0, -100%, 0);
+      opacity: 0;
+  }
+}
+
+@keyframes comeDown {
+  from {
+      transform: translate3d(0, 100%, 0);
+      opacity: 0;
+  }
+  to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+  }
+}
+
+@keyframes comeToDown {
+  from {
+      transform: translate3d(0, -100%, 0);
+      opacity: 0;
+  }
+  to {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+  }
+}
+
+@keyframes goToUp {
+  from {
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
+  }
+  to {
+      transform: translate3d(0, 100%, 0);
+      opacity: 0;
+  }
+}
+
+.animate-go-up {
+  animation: goUp 0.2s forwards ease-out;
+}
+
+.animate-come-down {
+  animation: comeDown 0.2s forwards ease-out;
+}
+
+.animate-come-to-down {
+  animation: comeToDown 0.2s forwards ease-out;
+}
+.animate-go-to-up {
+  animation: goToUp 0.2s forwards ease-out;
+}
+
