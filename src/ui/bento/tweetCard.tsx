@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import React from 'react';
 import { Heart } from 'lucide-react';
 
@@ -87,7 +87,7 @@ export default function TweetCard() {
                 </div>
                 <div className="mt-1 text-white text-sm">
                   So, <span className="text-blue-400">@TrueG78</span>. Your daily task apparently
-                  went on vacation today. Without you. Hope it had fun. Meanwhile, it's still
+                  went on vacation today. Without you. Hope it had fun. Meanwhile, it&apos;s still
                   waiting to be checked off whenever you decide to rejoin reality.
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function TweetCard() {
                 <div className='flex justify-between items-center'>
                   <div className="mt-1 text-white text-[12px] w-[93%]">
                     So, <span className="text-blue-400">@TrueG78</span>. Your daily task apparently
-                    went on vacation today. Without you. Hope it had fun. Meanwhile, it's still
+                    went on vacation today. Without you. Hope it had fun. Meanwhile, it&apos;s still
                     waiting to be checked off whenever you decide to rejoin reality.
                   </div>
                   <div
@@ -174,10 +174,3 @@ export default function TweetCard() {
       </div>
     );
 }
-
-// Add custom animation classes
-// In your global CSS (e.g., globals.css):
-// .animate-slide-up { animation: slideUp 0.3s forwards; }
-// .animate-slide-down { animation: slideDown 0.3s forwards; }
-// @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-// @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

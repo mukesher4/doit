@@ -1,7 +1,3 @@
-"use client"
-
-import React, { useEffect, useState } from 'react';
-
 const TextOutline = ({
   width = 300,
   height = 400,
@@ -14,11 +10,6 @@ const TextOutline = ({
   offsetX = 0,
   offsetY = 0,
 }) => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const pathData = `
     M ${borderRadius + padding},${padding}

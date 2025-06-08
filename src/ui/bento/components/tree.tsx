@@ -1,23 +1,13 @@
 "use client"
 
 import React, { useState } from "react";
-import "./tree.css";
-
-// Type definitions
-interface TreeNodeData {
-  id: number;
-  text: string;
-  side: "left" | "right" | null;
-  done: boolean;
-  top?: number;
-}
+import { ReactElement } from 'react';
 
 interface TreeNodeProps {
   node: TreeNode;
   onToggle: (id: number) => void;
 }
 
-// Tree node class
 class TreeNode {
   id: number;
   text: string;
@@ -135,7 +125,7 @@ function TaskNode({ node, onToggle }: TreeNodeProps) {
   );
 }
 
-export default function Tree(): JSX.Element {
+export default function Tree(): ReactElement {
   // Initialize tree structure
   const initializeTree = (): TreeNode[] => {
     // Create parent nodes
