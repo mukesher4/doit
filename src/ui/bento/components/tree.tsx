@@ -138,10 +138,10 @@ export default function Tree(): ReactElement {
     const child5 = new TreeNode(5, "Finish in Python", null, true);
     const child6 = new TreeNode(6, "Finish in C++", null, true);
 
-    task1.addChild(child2);
-    task1.addChild(child3);
-    task4.addChild(child5);
-    task4.addChild(child6);
+    task4.addChild(child2);
+    task4.addChild(child3);
+    task1.addChild(child5);
+    task1.addChild(child6);
 
     return [task1, task4];
   };
