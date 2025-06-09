@@ -31,12 +31,10 @@ class TreeNode {
     this.children.push(child);
   }
 
-  // Check if all children are done
   allChildrenDone(): boolean {
     return this.children.length === 0 || this.children.every(child => child.done);
   }
 
-  // Update parent status based on children
   updateParentStatus(): void {
     if (this.parent && !this.done) {
       this.parent.done = false;
@@ -44,7 +42,6 @@ class TreeNode {
     }
   }
 
-  // Update children status when parent is marked done
   updateChildrenStatus(status: boolean): void {
     this.children.forEach(child => {
       child.done = status;
@@ -126,17 +123,14 @@ function TaskNode({ node, onToggle }: TreeNodeProps) {
 }
 
 export default function Tree(): ReactElement {
-  // Initialize tree structure
   const initializeTree = (): TreeNode[] => {
-    // Create parent nodes
     const task1 = new TreeNode(1, "Finish DP From Striver's DSA Sheet", "right", false);
     const task4 = new TreeNode(4, "Finish off Figma Design for Persn. Proj", "left", true);
 
-    // Create and add children
-    const child2 = new TreeNode(2, "Design Buttons", null, false);
-    const child3 = new TreeNode(3, "Choose Color Scheme", null, false);
-    const child5 = new TreeNode(5, "Finish in Python", null, true);
-    const child6 = new TreeNode(6, "Finish in C++", null, true);
+    const child2 = new TreeNode(2, "Design Buttons", null, true);
+    const child3 = new TreeNode(3, "Choose Color Scheme", null, true);
+    const child5 = new TreeNode(5, "Finish in Python", null, false);
+    const child6 = new TreeNode(6, "Finish in C++", null, false);
 
     task4.addChild(child2);
     task4.addChild(child3);
@@ -148,7 +142,6 @@ export default function Tree(): ReactElement {
 
   const [taskTree, setTaskTree] = useState<TreeNode[]>(initializeTree());
 
-  // Find node by ID in the tree
   const findNodeById = (nodes: TreeNode[], id: number): TreeNode | null => {
     for (const node of nodes) {
       if (node.id === id) return node;
@@ -160,25 +153,19 @@ export default function Tree(): ReactElement {
 
   const handleToggle = (id: number): void => {
     setTaskTree((prevTree: TreeNode[]) => {
-      // Create deep copy of the tree
       const newTree = prevTree.map((node: TreeNode) => cloneNode(node));
       
-      // Find the node to toggle
       const nodeToToggle = findNodeById(newTree, id);
       
       if (nodeToToggle) {
-        // Toggle the node
         nodeToToggle.done = !nodeToToggle.done;
         
         if (nodeToToggle.done) {
-          // If marking as done, mark all children as done
           nodeToToggle.updateChildrenStatus(true);
         } else {
-          // If marking as not done, update parent status
           nodeToToggle.updateParentStatus();
         }
         
-        // Update parent status based on all children completion
         if (nodeToToggle.parent) {
           nodeToToggle.parent.done = nodeToToggle.parent.allChildrenDone();
         }
@@ -188,7 +175,6 @@ export default function Tree(): ReactElement {
     });
   };
 
-  // Deep clone function for tree nodes
   const cloneNode = (node: TreeNode): TreeNode => {
     const cloned = new TreeNode(node.id, node.text, node.side, node.done);
     cloned.children = node.children.map((child: TreeNode) => {
@@ -199,7 +185,6 @@ export default function Tree(): ReactElement {
     return cloned;
   };
 
-  // Calculate dynamic top positions
   const PARENT_HEIGHT: number = 32;
   const CHILD_HEIGHT: number = 28;
   const BLOCK_GAP: number = 20;
